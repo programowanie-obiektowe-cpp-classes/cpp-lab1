@@ -28,6 +28,6 @@ TEST_CASE("algebra", "[]")
 
     auto prod = v1 * v2;
 
-    REQUIRE(std::is_same_v< double, decltype(v3) >);
+    REQUIRE(std::is_same_v< double, decltype(prod) >);
     CHECK(prod == Approx{4.});
 }
