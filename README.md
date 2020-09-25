@@ -75,7 +75,7 @@ int main()
 }
 ```
 ### Zadanie 1
-Napisz klasę `Vector2D`, która przechowuje (jako publiczne zmienne) współrzędną x i y dwuwymiarowego wektora. Dodaj do niej metodę `norm`, zwracającą normę wektora, oraz `print`, drukującą (w ładnym formacie) jego współrzędne.
+Napisz klasę `Wektor2D`, która przechowuje (jako publiczne zmienne) współrzędną x i y dwuwymiarowego wektora. Dodaj do niej metodę `norm`, zwracającą normę wektora, oraz `print`, drukującą (w ładnym formacie) jego współrzędne.
 
 ### Konstruktory i destruktory
 Szczególne typy metod to konstruktory i destruktory. Konstruktory to metody służące do tworzenia obiektów. Klasa może mieć dowolną liczbę konstruktorów (rozróżnianych typami podawanych argumentów, dokładnie tak samo jak przeciążalibyśmy każdą inną funkcję). Destruktor to metoda wywoływana przy niszczeniu obiektów danej klasy.
