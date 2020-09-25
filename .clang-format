@@ -6,7 +6,6 @@ AlignConsecutiveDeclarations: true
 AlignOperands: true
 AlignTrailingComments: true
 AllowAllConstructorInitializersOnNextLine: true
-AllowShortBlocksOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: InlineOnly
 AllowShortIfStatementsOnASingleLine: Never
