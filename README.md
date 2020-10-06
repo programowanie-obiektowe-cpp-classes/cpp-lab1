@@ -77,6 +77,8 @@ int main()
 #### Zadanie 1
 Napisz klasę `Wektor2D`, która przechowuje (jako publiczne zmienne) współrzędną x i y dwuwymiarowego wektora. Dodaj do niej metodę `norm`, zwracającą normę wektora, oraz `print`, drukującą (w ładnym formacie) jego współrzędne.
 
+---
+
 ### Konstruktory i destruktory
 Szczególne typy metod to konstruktory i destruktory. Konstruktory to metody służące do tworzenia obiektów. Klasa może mieć dowolną liczbę konstruktorów (rozróżnianych typami podawanych argumentów, dokładnie tak samo jak przeciążalibyśmy każdą inną funkcję). Destruktor to metoda wywoływana przy niszczeniu obiektów danej klasy.
 ```C++
@@ -135,6 +137,8 @@ Dodaj do klasy `Wektor2D` konstruktor dwuargumentowy, który nadaje wartości ws
 #### Zadanie 3
 Napisz klasę `Informer`, która posiada konstruktor domyślny, drukujący informację o konstrukcji oraz destruktor, drukujący informację o destrukcji. Dodaj do klasy `Wektor2D` pole typu `Informer`. Które destruktory wołane są przy zniszczeniu wektora? W jakiej kolejności? Zastanów się, jakie ma to implikacje dla komponowania większych obiektów z mniejszych obiektów.
 
+---
+
 ### Modyfikatory dostępu
 Wszystkie pola i metody, z których dotychczas korzystaliśmy były publiczne, tzn. mieliśmy do nich dostęp spoza klasy (z funkcji `main`). Często możemy jednak chcieć zablokować dostęp do części pól i/lub metod jakiejś klasy. Postawmy się na przykład w pozycji autora/autorki biblioteki do sprawdzania pogody. W tego typu bibliotece gdzieś musi znaleźć się funkcjonalność do komunikacji z serwerem, a następnie interpretowania danych, które od niego otrzymamy. Jednak nie chcemy, aby użytkownik naszej biblioteki musiał ten proces widzieć ani rozumieć. Wolimy, żeby użytkownik wołał po prostu np.
 ```C++
@@ -165,6 +169,8 @@ private:
 
 #### Zadanie 4
 Dodaj do klasy `Wektor2D` metody `setX`, `getX`, `setY` i `getY`, służące do odczytywania i modyfikowania współrzędnych wektora. Uczyń pola opisujące współrzędne prywatnymi. Co stanie się, gdy spróbujesz zawołać np. `std::cout << wektor.x;`?
+
+---
 
 ### Przeciążanie operatorów
 W języku C++ operatory ([tu znajdziesz ich listę](https://en.cppreference.com/w/cpp/language/operators)) możemy przeciążać tak samo jak wszystkie inne funkcje. Spójrzmy na przykład:
@@ -199,6 +205,8 @@ Przeciąż operatory `+` i `*` tak, aby były zdefiniowane dla klasy `Wektor2D` 
 #### Zadanie 6
 Przeciąż operator `<<` tak, aby można było zawołać `std::cout << wektor;`. Następnie przeciąż go tak, aby można było zawołać `std::cout << wektor1 << wektor2 /* << ... */ << '\n'`.
 
+---
+
 ### Pola i metody statyczne
 Dotychczas definiowaliśmy pola i metody, które operowały na konkretnym obiekcie danej klasy (np. imię jest indywidualną cechą każdego człowieka). Czasem przydatne mogą być także pola i metody statyczne, czyli zdefiniowane dla całej klasy, nie dla jej poszczególnych instancji. Przyjrzyjmy się przykładowi:
 ```C++
@@ -223,12 +231,14 @@ Statczne mogą być także funkcje (metody). W ostatnim zadaniu nic nie stoi na 
 #### Zadanie 8
 Uczyń pole `num_wek` prywatnym. Dodaj do klasy `Wektor2D` publiczną, statyczną funkcję o sygnaturze `int populacja()`, która zwraca wartość pola `num_wek`. Zmodyfikuj odpowiednio kod w `main`ie.
 
-Bardzo istotny przykład wykorzystania metod statycznych stanowi wrapper na konstruktor. chcielibyśmy teraz zdefiniować dodatkowy konstruktor klasy `Wektor2D`, który przyjmie współrzędne wektora w układzie biegunowym. Konstruktor taki przyjmuje oczywiście 2 liczby zmiennoprzecinkowe, ma zatem sygnaturę `Wektor2D(double, double)`. Niestety, taki konstruktor został już przez nas zdefiniowany. Jak temu zaradzić?
+Bardzo istotny przykład wykorzystania metod statycznych stanowi wrapper na konstruktor (wrapper to w programowaniu określenie na funkcjonalność, która zawija jedynie inną funkcjonalność, nie dodając zbyt wiele od siebie). chcielibyśmy teraz zdefiniować dodatkowy konstruktor klasy `Wektor2D`, który przyjmie współrzędne wektora w układzie biegunowym. Konstruktor taki przyjmuje oczywiście 2 liczby zmiennoprzecinkowe, ma zatem sygnaturę `Wektor2D(double, double)`. Niestety, taki konstruktor został już przez nas zdefiniowany. Jak temu zaradzić?
 
 #### Zadanie 9
 Uczyń konstruktor wektora o sygnaturze `Wektor2D(double, double)` prywatnym. Napisz publiczną, statyczną metodę `Wektor2D kart(double, double)`, która tworzy wektor na podstawie podanych współrzędnych w układzie kartezjańskim. Teraz dodaj kolejną publiczną, statyczną metodę `Wektor2D bieg(double, double)`, która tworzy wektor na podstawie podanych współrzędnych w układzie biegunowym (musisz skonwertować je do układu kartezjańskiego). Zmodyfikuj odpowiednio kod w `main`ie (wszystkie wektory tworzone bezpośrednio muszą teraz być tworzone przez zawołanie odpowiedniej metody statycznej). Zweryfikuj, czy konwersja współrzędnych z jednego układu współrzędnych na drugi przebiegła (matematycznie) poprawnie. Parę uwag do zadania:
 - Funkcje trygonometryczne znajdziesz w nagłówku `#include <cmath>`. Wszystkie nagłówki wykorzystywane w języku C zostały przeniesione do C++ zgodnie w sposób `nazwa_nagłówka.h` -> `cnazwa_nagłówka`.
 - Domyślny konstruktor wektora może pozostać publiczny. Punkt (0, 0) pokrywa się w obu układach współrzędnych, nie ma tu dwuznaczności.
+
+---
 
 ### Pytania na koniec
 - Czym jest `std::cout` (do jakiej kategorii bytów należy)? Jaki ma scope ("zasięg istnienia")?
