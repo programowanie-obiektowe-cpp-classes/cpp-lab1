@@ -74,7 +74,7 @@ int main()
     Alice.printAge();
 }
 ```
-### Zadanie 1
+#### Zadanie 1
 Napisz klasę `Wektor2D`, która przechowuje (jako publiczne zmienne) współrzędną x i y dwuwymiarowego wektora. Dodaj do niej metodę `norm`, zwracającą normę wektora, oraz `print`, drukującą (w ładnym formacie) jego współrzędne.
 
 ### Konstruktory i destruktory
@@ -127,13 +127,13 @@ int main()
                       // Most vexing parse!
 }
 ```
-Powyższe zachowanie wynika z tego, że w C++ wszystko, co może tylko być deklaracją, jest interpretowane jako deklarację.
+Powyższe zachowanie wynika z tego, że w C++ wszystko, co może tylko być deklaracją, jest interpretowane jako deklaracja.
 
-### Zadanie 2
+#### Zadanie 2
 Dodaj do klasy `Wektor2D` konstruktor dwuargumentowy, który nadaje wartości współrzędnym wektora, a następnie je drukuje. Napisz destruktor, który także drukuje tę informację. Stwórz kilka różnych wektorów. W jakiej kolejności są one niszczone? W którym miejscu w kodzie następuje destrukcja?
 
-### Zadanie 3
-Napisz klasę `Informer`, która posiada konstruktor domyślny, drukujący informację o konstrukcji oraz destruktor, drukujący informację o destrukcji. Dodaj do klasy wektor pole typu `Informer`. Które destruktory wołane są przy zniszczeniu wektora? W jakiej kolejności? Zastanów się, jakie ma to implikacje dla komponowania większych obiektów z mniejszych obiektów.
+#### Zadanie 3
+Napisz klasę `Informer`, która posiada konstruktor domyślny, drukujący informację o konstrukcji oraz destruktor, drukujący informację o destrukcji. Dodaj do klasy `Wektor2D` pole typu `Informer`. Które destruktory wołane są przy zniszczeniu wektora? W jakiej kolejności? Zastanów się, jakie ma to implikacje dla komponowania większych obiektów z mniejszych obiektów.
 
 ### Modyfikatory dostępu
 Wszystkie pola i metody, z których dotychczas korzystaliśmy były publiczne, tzn. mieliśmy do nich dostęp spoza klasy (z funkcji `main`). Często możemy jednak chcieć zablokować dostęp do części pól i/lub metod jakiejś klasy. Postawmy się na przykład w pozycji autora/autorki biblioteki do sprawdzania pogody. W tego typu bibliotece gdzieś musi znaleźć się funkcjonalność do komunikacji z serwerem, a następnie interpretowania danych, które od niego otrzymamy. Jednak nie chcemy, aby użytkownik naszej biblioteki musiał ten proces widzieć ani rozumieć. Wolimy, żeby użytkownik wołał po prostu np.
@@ -163,7 +163,7 @@ private:
 };
 ```
 
-### Zadanie 4
+#### Zadanie 4
 Dodaj do klasy `Wektor2D` metody `setX`, `getX`, `setY` i `getY`, służące do odczytywania i modyfikowania współrzędnych wektora. Uczyń pola opisujące współrzędne prywatnymi. Co stanie się, gdy spróbujesz zawołać np. `std::cout << wektor.x;`?
 
 ### Przeciążanie operatorów
@@ -193,14 +193,46 @@ int main()
 ```
 Pozwala nam to często na pisanie bardziej ekspresyjnego kodu poprzez definiowanie abstrakcyjnych operacji przy pomocy znanych nam intuicyjnie operatorów (`&&`, `+`, `*`, itd.). Więcej na temat szczególnego operatora `=` powiemy na kolejnych zajęciach.
 
-### Zadanie 5
+#### Zadanie 5
 Przeciąż operatory `+` i `*` tak, aby były zdefiniowane dla klasy `Wektor2D` (zgodnie z tradycyjną algebrą).
 
-### Zadanie 6
-Przeciąż operator `<<` tak, aby można było zawołać `std::cout << wektor;`. Następnie przeciąż go tak, aby można było zawołać `std::cout << wektor1 << wektor2 /* << ... << */ << '\n'`.
+#### Zadanie 6
+Przeciąż operator `<<` tak, aby można było zawołać `std::cout << wektor;`. Następnie przeciąż go tak, aby można było zawołać `std::cout << wektor1 << wektor2 /* << ... */ << '\n'`.
+
+### Pola i metody statyczne
+Dotychczas definiowaliśmy pola i metody, które operowały na konkretnym obiekcie danej klasy (np. imię jest indywidualną cechą każdego człowieka). Czasem przydatne mogą być także pola i metody statyczne, czyli zdefiniowane dla całej klasy, nie dla jej poszczególnych instancji. Przyjrzyjmy się przykładowi:
+```C++
+struct Human
+{
+    static       int n_humans;
+    static const int n_human_heads = 1;
+    
+    Human()  { ++n_humans; }
+    ~Human() { --n_humans; }
+};
+
+int Human::n_humans = 0;
+```
+Dzięki odpowiedniej definicji konstruktora i destruktora, pole `n_humans` pozwala nam śledzić, ile ludzi żyje w danym momencie wykonania programu. Dodatkowo, pole `n_human_heads` pozwala nam na zapisanie, ile głów ma człowiek (jest to cecha wspólna wszystkich ludzi). W różnych miejscach kodu możemy odnosić się do tej wielkości, a jeżeli na późniejszym etapie pracy zdecydujemy się, że chcemy, aby gatunek ludzki w naszym programie miał jednak więcej głów, wystarczy zmienić jedną wartość. Taki sposób pisania kodu pozwala nam zaoszczędzić pracy oraz uniknąć potencjalnych błędów. Zwróćmy także uwagę, że statyczne pola nie-`const` musimy definiować poza ciałem klasy, a pola `const` możemy (i powinniśmy) definiować wewnątrz klasy.
+
+#### Zadanie 7
+Dodaj do klasy `Wektor2D` prywatne pole `num_wek` typu całkowitego, które przechowuje bieżącą liczbę istniejących obecnie wektorów. Zainicjuj je zerem. Zmodyfikuj odpowiednio konstruktory i dodaj odpowiedni destruktor. Stwórz w `main`ie kilka wektorów, z których część umieścisz w dodatkowym zagnieżdżonym scope'ie (bloku nawiasów `{}`). Zweryfikuj swoją pracę wyświetlając wartość pola `num_wek` na różnych etapach wykonania programu (lub podglądając ją w debuggerze).
+
+Statczne mogą być także funkcje (metody). W ostatnim zadaniu nic nie stoi na przeszkodzie, abyśmy ręcznie zmodyfikowali zmienną reprezentującą liczbę istniejących wektorów. Naprawmy ten potencjalny problem, wykorzystując fakt, że metody statyczne mają dostęp do prywatnych pól i metod danej klasy (zarówno tych statycznych jak i nie).
+
+#### Zadanie 8
+Uczyń pole `num_wek` prywatnym. Dodaj do klasy `Wektor2D` publiczną, statyczną funkcję o sygnaturze `int populacja()`, która zwraca wartość pola `num_wek`. Zmodyfikuj odpowiednio kod w `main`ie.
+
+Bardzo istotny przykład wykorzystania metod statycznych stanowi wrapper na konstruktor. chcielibyśmy teraz zdefiniować dodatkowy konstruktor klasy `Wektor2D`, który przyjmie współrzędne wektora w układzie biegunowym. Konstruktor taki przyjmuje oczywiście 2 liczby zmiennoprzecinkowe, ma zatem sygnaturę `Wektor2D(double, double)`. Niestety, taki konstruktor został już przez nas zdefiniowany. Jak temu zaradzić?
+
+#### Zadanie 9
+Uczyń konstruktor wektora o sygnaturze `Wektor2D(double, double)` prywatnym. Napisz publiczną, statyczną metodę `Wektor2D kart(double, double)`, która tworzy wektor na podstawie podanych współrzędnych w układzie kartezjańskim. Teraz dodaj kolejną publiczną, statyczną metodę `Wektor2D bieg(double, double)`, która tworzy wektor na podstawie podanych współrzędnych w układzie biegunowym (musisz skonwertować je do układu kartezjańskiego). Zmodyfikuj odpowiednio kod w `main`ie (wszystkie wektory tworzone bezpośrednio muszą teraz być tworzone przez zawołanie odpowiedniej metody statycznej). Zweryfikuj, czy konwersja współrzędnych z jednego układu współrzędnych na drugi przebiegła (matematycznie) poprawnie. Parę uwag do zadania:
+- Funkcje trygonometryczne znajdziesz w nagłówku `#include <cmath>`. Wszystkie nagłówki wykorzystywane w języku C zostały przeniesione do C++ zgodnie w sposób `nazwa_nagłówka.h` -> `cnazwa_nagłówka`.
+- Domyślny konstruktor wektora może pozostać publiczny. Punkt (0, 0) pokrywa się w obu układach współrzędnych, nie ma tu dwuznaczności.
 
 ### Pytania na koniec
-- Czym jest `std::cout`?
+- Czym jest `std::cout` (do jakiej kategorii bytów należy)? Jaki ma scope ("zasięg istnienia")?
 - Z jakiego konstruktora klasy `std::string` korzystaliśmy w klasie `Human`?
 - Czy klasa może mieć więcej niż 1 destruktor? Dlaczego?
 - Na ile sposobów możemy zdefiniować `operator+` dla klasy `Wektor2D`? W razie wątpliwości zajrzyj [tutaj](https://www.youtube.com/watch?v=gjFrjNK3Dq4).
+- W którym miejscu programu rozpoczynają swoje życie obiekty statyczne? W którym je kończą?
