@@ -231,11 +231,11 @@ Statczne mogą być także funkcje (metody). W ostatnim zadaniu nic nie stoi na 
 #### Zadanie 8
 Uczyń pole `num_wek` prywatnym. Dodaj do klasy `Wektor2D` publiczną, statyczną funkcję o sygnaturze `int populacja()`, która zwraca wartość pola `num_wek`. Zmodyfikuj odpowiednio kod w `main`ie.
 
-Bardzo istotny przykład wykorzystania metod statycznych stanowi wrapper na konstruktor (wrapper to w programowaniu określenie na funkcjonalność, która zawija jedynie inną funkcjonalność, nie dodając zbyt wiele od siebie). chcielibyśmy teraz zdefiniować dodatkowy konstruktor klasy `Wektor2D`, który przyjmie współrzędne wektora w układzie biegunowym. Konstruktor taki przyjmuje oczywiście 2 liczby zmiennoprzecinkowe, ma zatem sygnaturę `Wektor2D(double, double)`. Niestety, taki konstruktor został już przez nas zdefiniowany. Jak temu zaradzić?
+Bardzo istotny przykład wykorzystania metod statycznych stanowi wrapper na konstruktor (wrapper to w programowaniu określenie na funkcjonalność, która zawija jedynie inną funkcjonalność, nie dodając zbyt wiele od siebie). Chcielibyśmy teraz zdefiniować dodatkowy konstruktor klasy `Wektor2D`, który przyjmie współrzędne wektora w układzie biegunowym. Konstruktor taki przyjmuje oczywiście 2 liczby zmiennoprzecinkowe, ma zatem sygnaturę `Wektor2D(double, double)`. Niestety, taki konstruktor został już przez nas zdefiniowany. Jak temu zaradzić?
 
 #### Zadanie 9
 Uczyń konstruktor wektora o sygnaturze `Wektor2D(double, double)` prywatnym. Napisz publiczną, statyczną metodę `Wektor2D kart(double, double)`, która tworzy wektor na podstawie podanych współrzędnych w układzie kartezjańskim. Teraz dodaj kolejną publiczną, statyczną metodę `Wektor2D bieg(double, double)`, która tworzy wektor na podstawie podanych współrzędnych w układzie biegunowym (musisz skonwertować je do układu kartezjańskiego). Zmodyfikuj odpowiednio kod w `main`ie (wszystkie wektory tworzone bezpośrednio muszą teraz być tworzone przez zawołanie odpowiedniej metody statycznej). Zweryfikuj, czy konwersja współrzędnych z jednego układu współrzędnych na drugi przebiegła (matematycznie) poprawnie. Parę uwag do zadania:
-- Funkcje trygonometryczne znajdziesz w nagłówku `#include <cmath>`. Wszystkie nagłówki wykorzystywane w języku C zostały przeniesione do C++ zgodnie w sposób `nazwa_nagłówka.h` -> `cnazwa_nagłówka`.
+- Funkcje trygonometryczne znajdziesz w nagłówku `#include <cmath>`. Wszystkie nagłówki wykorzystywane w języku C zostały przeniesione do C++ zgodnie w sposób `nazwa_nagłówka.h` &#8594; `cnazwa_nagłówka`.
 - Domyślny konstruktor wektora może pozostać publiczny. Punkt (0, 0) pokrywa się w obu układach współrzędnych, nie ma tu dwuznaczności.
 
 ---
