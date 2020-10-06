@@ -14,4 +14,3 @@ Wektor2D sum = v1 + v2; // dodawanie wektorów
 double prod = v1 * v2; // iloczyn skalarny
 
 ```
-Zwróć uwagę, aby 
