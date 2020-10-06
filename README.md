@@ -17,6 +17,8 @@ Prerekwizytami do niniejszego kursu są:
 
 Zaznaczamy też, że przystępując do laboratorium, czytelnik powinien być zaznajomiony z treścią odpowiedniego wykładu. Opisy zawarte w instrukcjach nie są wyczerpujące, stanowią one jedynie zwięzłe przypomnienie i mają za zadanie skupić uwagę czytelnika na wybranych aspektach omawianego zagadnienia.
 
+---
+
 ## Klasy
 ### Pola i metody
 Fundamentalnym pojęciem dla C\+\+ i programowania obiektowego jest klasa. Definiując klasy oraz tworząc ich instancje (obiekty), możemy wyrazić operacje na bitach pamięci w sposób abstrakcyjny i zrozumiały dla człowieka. Klasy deklarujemy przy użycia słowa kluczowego `class` lub `struct`. Różnią się one jedynie tym, że domyślnie wszystkie pola klasy zadeklarowanej jako `class` są prywatne, a `struct` publiczne (co to dokładnie znaczy omówimy za chwilę).
