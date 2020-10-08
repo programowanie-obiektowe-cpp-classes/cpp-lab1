@@ -17,8 +17,6 @@ Prerekwizytami do niniejszego kursu są:
 
 Zaznaczamy też, że przystępując do laboratorium, czytelnik powinien być zaznajomiony z treścią odpowiedniego wykładu. Opisy zawarte w instrukcjach nie są wyczerpujące, stanowią one jedynie zwięzłe przypomnienie i mają za zadanie skupić uwagę czytelnika na wybranych aspektach omawianego zagadnienia.
 
----
-
 ## Klasy
 ### Pola i metody
 Fundamentalnym pojęciem dla C\+\+ i programowania obiektowego jest klasa. Definiując klasy oraz tworząc ich instancje (obiekty), możemy wyrazić operacje na bitach pamięci w sposób abstrakcyjny i zrozumiały dla człowieka. Klasy deklarujemy przy użycia słowa kluczowego `class` lub `struct`. Różnią się one jedynie tym, że domyślnie wszystkie pola klasy zadeklarowanej jako `class` są prywatne, a `struct` publiczne (co to dokładnie znaczy omówimy za chwilę).
@@ -79,8 +77,6 @@ int main()
 #### Zadanie 1
 Napisz klasę `Wektor2D`, która przechowuje (jako publiczne zmienne) współrzędną x i y dwuwymiarowego wektora. Dodaj do niej metodę `norm`, zwracającą normę wektora, oraz `print`, drukującą (w ładnym formacie) jego współrzędne.
 
----
-
 ### Konstruktory i destruktory
 Szczególne typy metod to konstruktory i destruktory. Konstruktory to metody służące do tworzenia obiektów. Klasa może mieć dowolną liczbę konstruktorów (rozróżnianych typami podawanych argumentów, dokładnie tak samo jak przeciążalibyśmy każdą inną funkcję). Destruktor to metoda wywoływana przy niszczeniu obiektów danej klasy.
 ```C++
@@ -115,7 +111,7 @@ int a1 = 0; // Nie, tutaj nie ma przypisania, int od razu inicjalizowany jest 0.
 int a2(0);  // Tutaj bez niespodzianki, ale co się stanie, gdy zawołamy domyślny konstruktor jakiejś klasy?
 int a3{0};  // Od C++11 preferujemy nawiasy klamrowe!
 ```
-Współcześnie, silnie preferujemy inicjalizację (konstrukcję) przy pomocy nawiasów klamrowych. Wynika to między innymi z faktu, że wołanie konstruktora domyślnego (tzn. tego bez argumentów) przy pomocy nawiasów okrągłych skutkuje dość nieoczekiwanym zachowaniem, tzw. _most vexing parse_.
+Współcześnie, silnie preferujemy inicjalizację (konstrukcję) przy pomocy nawiasów klamrowych. Wynika to między innymi z faktu, że wołanie konstruktora domyślnego (tzn. tego bez argumentów) przy pomocy nawiasów okrągłych skutkuje dość nieoczekiwanym zachowaniem, tzw. *most vexing parse*.
 ```C++
 struct Human
 {
@@ -131,15 +127,13 @@ int main()
                       // Most vexing parse!
 }
 ```
-Powyższe zachowanie wynika z tego, że w C++ wszystko, co może tylko być deklaracją, jest interpretowane jako deklaracja.
+Powyższe zachowanie wynika z tego, że w C++ wszystko, co może tylko być deklaracją, jest interpretowane jako deklaracja. Inicjalizacja nawiasami klamrowymi może w pewnym przypadku sprawić kłopoty, o czym powiemy na zajęciach dotyczących kontenerów (kłopoty wynikają ze szczególnych zasad dotyczących `std::initializer_list`). Na razie starajmy się jednak wyrabiać dobre nawyki i pozostańmy przy podawaniu argumentów konstruktorów wewnątrz `{ }`.
 
 #### Zadanie 2
 Dodaj do klasy `Wektor2D` konstruktor dwuargumentowy, który nadaje wartości współrzędnym wektora, a następnie je drukuje. Napisz destruktor, który także drukuje tę informację. Stwórz kilka różnych wektorów. W jakiej kolejności są one niszczone? W którym miejscu w kodzie następuje destrukcja?
 
 #### Zadanie 3
 Napisz klasę `Informer`, która posiada konstruktor domyślny, drukujący informację o konstrukcji oraz destruktor, drukujący informację o destrukcji. Dodaj do klasy `Wektor2D` pole typu `Informer`. Które destruktory wołane są przy zniszczeniu wektora? W jakiej kolejności? Zastanów się, jakie ma to implikacje dla komponowania większych obiektów z mniejszych obiektów.
-
----
 
 ### Modyfikatory dostępu
 Wszystkie pola i metody, z których dotychczas korzystaliśmy były publiczne, tzn. mieliśmy do nich dostęp spoza klasy (z funkcji `main`). Często możemy jednak chcieć zablokować dostęp do części pól i/lub metod jakiejś klasy. Postawmy się na przykład w pozycji autora/autorki biblioteki do sprawdzania pogody. W tego typu bibliotece gdzieś musi znaleźć się funkcjonalność do komunikacji z serwerem, a następnie interpretowania danych, które od niego otrzymamy. Jednak nie chcemy, aby użytkownik naszej biblioteki musiał ten proces widzieć ani rozumieć. Wolimy, żeby użytkownik wołał po prostu np.
@@ -171,8 +165,6 @@ private:
 
 #### Zadanie 4
 Dodaj do klasy `Wektor2D` metody `setX`, `getX`, `setY` i `getY`, służące do odczytywania i modyfikowania współrzędnych wektora. Uczyń pola opisujące współrzędne prywatnymi. Co stanie się, gdy spróbujesz zawołać np. `std::cout << wektor.x;`?
-
----
 
 ### Przeciążanie operatorów
 W języku C++ operatory ([tu znajdziesz ich listę](https://en.cppreference.com/w/cpp/language/operators)) możemy przeciążać tak samo jak wszystkie inne funkcje. Spójrzmy na przykład:
@@ -207,8 +199,6 @@ Przeciąż operatory `+` i `*` tak, aby były zdefiniowane dla klasy `Wektor2D` 
 #### Zadanie 6
 Przeciąż operator `<<` tak, aby można było zawołać `std::cout << wektor;`. Następnie przeciąż go tak, aby można było zawołać `std::cout << wektor1 << wektor2 /* << ... */ << '\n'`.
 
----
-
 ### Pola i metody statyczne
 Dotychczas definiowaliśmy pola i metody, które operowały na konkretnym obiekcie danej klasy (np. imię jest indywidualną cechą każdego człowieka). Czasem przydatne mogą być także pola i metody statyczne, czyli zdefiniowane dla całej klasy, nie dla jej poszczególnych instancji. Przyjrzyjmy się przykładowi:
 ```C++
@@ -240,9 +230,7 @@ Uczyń konstruktor wektora o sygnaturze `Wektor2D(double, double)` prywatnym. Na
 - Funkcje trygonometryczne znajdziesz w nagłówku `#include <cmath>`. Wszystkie nagłówki wykorzystywane w języku C zostały przeniesione do C++ w sposób `nazwa_nagłówka.h` &#8594; `cnazwa_nagłówka`.
 - Domyślny konstruktor wektora może pozostać publiczny. Punkt (0, 0) pokrywa się w obu układach współrzędnych, nie ma tu dwuznaczności.
 
----
-
-### Pytania na koniec
+## Pytania na koniec
 - Czym jest `std::cout` (do jakiej kategorii bytów należy)? Jaki ma scope ("zasięg istnienia")?
 - Z jakiego konstruktora klasy `std::string` korzystaliśmy w klasie `Human`?
 - Czy klasa może mieć więcej niż 1 destruktor? Dlaczego?
