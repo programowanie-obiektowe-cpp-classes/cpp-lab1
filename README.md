@@ -105,7 +105,7 @@ int main()
     Human Alice(35, 175.5, "Alice");
 }
 ```
-Zauważmy, że teraz próba konstrukcji `Human Alice;` spowodowałaby błąd kompilacji. Dzieje się tak dlatego, że w przypadku, w którym nie zdefiniujemy żadnego konstruktora, kompilator próbuje zrobić to za nas (więcej o tym i o tzw. "Rule of 5" w następnej instrukcji). Jeżeli zdefiniujemy jakikolwiek konstruktor, kompilator nie zdefiniuje żadnych dodatkowych. Warto też tutaj powiedzieć, że niestety z przyczyn historycznych składnia konstrukcji w C++ jest dość zagmatwana (zainteresowanych szczegółami odsyłamy np. do [tego wykładu](https://www.youtube.com/watch?v=7DTlWPgX6zs)). Poniższe inicjalizacje zmiennej typu `int` są dokładnie równoważne:
+Zauważmy, że teraz próba konstrukcji `Human Alice;` spowodowałaby błąd kompilacji. Dzieje się tak dlatego, że w przypadku, w którym nie zdefiniujemy żadnego konstruktora, kompilator próbuje zrobić to za nas (więcej o tym i o tzw. "Rule of 5" w następnej instrukcji). Jeżeli zdefiniujemy jakikolwiek konstruktor, kompilator nie zdefiniuje żadnych dodatkowych. Warto też tutaj powiedzieć, że niestety z przyczyn historycznych składnia konstrukcji w C++ jest dość zagmatwana (zainteresowanych szczegółami odsyłamy np. do [tego wykładu](https://youtu.be/7DTlWPgX6zs)). Poniższe inicjalizacje zmiennej typu `int` są dokładnie równoważne:
 ```C++
 int a1 = 0; // Nie, tutaj nie ma przypisania, int od razu inicjalizowany jest 0. Nieco mylące...
 int a2(0);  // Tutaj bez niespodzianki, ale co się stanie, gdy zawołamy domyślny konstruktor jakiejś klasy?
@@ -234,5 +234,5 @@ Uczyń konstruktor wektora o sygnaturze `Wektor2D(double, double)` prywatnym. Na
 - Czym jest `std::cout` (do jakiej kategorii bytów należy)? Jaki ma scope ("zasięg istnienia")?
 - Z jakiego konstruktora klasy `std::string` korzystaliśmy w klasie `Human`?
 - Czy klasa może mieć więcej niż 1 destruktor? Dlaczego?
-- Na ile sposobów możemy zdefiniować `operator+` dla klasy `Wektor2D`? W razie wątpliwości zajrzyj [tutaj](https://www.youtube.com/watch?v=gjFrjNK3Dq4).
+- Na ile sposobów możemy zdefiniować `operator+` dla klasy `Wektor2D`? W razie wątpliwości zajrzyj [tutaj](https://youtu.be/gjFrjNK3Dq4).
 - W którym miejscu programu rozpoczynają swoje życie obiekty statyczne? W którym je kończą?
