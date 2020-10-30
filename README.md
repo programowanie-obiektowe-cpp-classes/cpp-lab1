@@ -88,11 +88,11 @@ struct Human
         age    = a;
         height = h;
         name   = n;
-        std::cout << "Hello, " << name << "!\n"
+        std::cout << "Hello, " << name << "!\n";
     }
     ~Human()
     {
-        std::cout << "Goodbye, " << name << "...\n"
+        std::cout << "Goodbye, " << name << "...\n";
     }
     
     int         age;
@@ -180,7 +180,7 @@ struct Couple
 
 Couple operator+(Human h1, Human h2)
 {
-    return Couple{h1, h2}
+    return Couple{h1, h2};
 }
 
 int main()
