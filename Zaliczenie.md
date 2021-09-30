@@ -1,5 +1,6 @@
 # Zaliczenie Laboratorium I
 W (istniejącym już) pliku `Wektor2D.hpp` napisz implementację klasy `Wektor2D` w taki sposób, aby możliwe było wykonanie poniższego kodu:
+
 ```c++
 Wektor2D v1{};           // Konstruktor domyślny, wektor o wsp. [0, 0]
 v1.setX(1.);             // setter
