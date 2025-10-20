@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+# Common build/IDE directories
+zal/build/
+build/
+out/
+.vs/
+.vscode/
