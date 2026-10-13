@@ -1,5 +1,17 @@
-# Laboratorium I
+# Zaliczenie Laboratorium I
+W (istniejącym już) pliku `Wektor2D.hpp` napisz implementację klasy `Wektor2D` w taki sposób, aby możliwe było wykonanie poniższego kodu:
 
-Aktualny tekst instrukcji znajdziesz pod adresem <http://ccfd.github.io/courses/cpp_inst01.html>.
+```c++
+Wektor2D v1{};           // Konstruktor domyślny, wektor o wsp. [0, 0]
+v1.setX(1.);             // setter
+v1.setY(1.);             // setter
+double x1 = v1.getX();   // getter
+double y1 = v1.getY();   // getter
 
-Treść zadania na zaliczenie znajdziesz w pliku `Zaliczenie.md`
+Wektor2D v2{2., 2.}; // Konstruktor nadający współrzędne
+
+Wektor2D sum = v1 + v2; // dodawanie wektorów
+
+double prod = v1 * v2; // iloczyn skalarny
+
+```
